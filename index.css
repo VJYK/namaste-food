@@ -17,7 +17,7 @@
     margin: 10px 0px;
 }
 .card-container{
-    width: 200px;
+    width: 300px;
     height: 400px;
     border: 1px solid;
     margin: 10px;
@@ -36,4 +36,16 @@
 .filter-btn{
     cursor: pointer;
     padding: 10px;
+}
+
+.shimmer-container{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.shimmer-card{
+    margin: 20px;
+    height: 400px;
+    width: 300px;
+    background-color: #f0f0f0;
 }
