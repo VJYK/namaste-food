@@ -1,5 +1,5 @@
 import {restaurentList} from '../utils/mockData';
-import RestaurentCard from './RestaurentCard';
+import RestaurentCard,{withLabelPromoted} from '../components/RestaurentCard.js';
 
 import { useState,useEffect } from 'react';
 import Shimmer from './Shimmer';
@@ -9,6 +9,9 @@ const Body = () => {
   const [listOfRestaurent,setListOfRestaurent]= useState([]);
   const [filteredRestaurent,setFilteredRestaurent]= useState([]);
   const [searchText,setSearchText]=useState('');
+  
+  const RestaurentCardPromoted =withLabelPromoted(RestaurentCard);
+  
   useEffect(() => {
    fetchData()
   },[])
@@ -22,7 +25,7 @@ const Body = () => {
     setFilteredRestaurent(json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants)
     console.log(listOfRestaurent)
   }
-
+  
   //Conditional Rendering
   return listOfRestaurent.length==0?<Shimmer/>: (
       <div className="body">
@@ -48,7 +51,7 @@ const Body = () => {
         </div>
         <div className="res-container">
           {filteredRestaurent.map((restaurent) => (
-            <Link to={`restaurent/${restaurent.info.id}`} key={restaurent.info.id}><RestaurentCard key={restaurent.info.id} resData={restaurent} /></Link>
+            <Link to={`restaurent/${restaurent.info.id}`} key={restaurent.info.id}> {restaurent.info.isOpen ? (<RestaurentCardPromoted resData={restaurent}/>) : (<RestaurentCard resData={restaurent} />)} </Link>
           ))}
         </div>
       </div>
