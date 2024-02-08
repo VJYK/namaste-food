@@ -1,11 +1,15 @@
 import { Link } from "react-router-dom";
 import { LOGO_URL } from "../utils/constant";
-import { useState } from "react";
+import { useState,useContext} from "react";
 import useOnlineStatus from "../utils/useOnlineStatus";
+import UserContext from "../utils/UserContext";
 
 const Header = () => {
   const [btnName, setBtnName] = useState("Login");
   const status = useOnlineStatus();
+  const {loggedInUser} = useContext(UserContext);
+
+  console.log(loggedInUser)
   return (
     <div className="header">
       <div className="logo-container">
@@ -27,6 +31,7 @@ const Header = () => {
             <Link to="/grocessary">Grocerry</Link>
           </li>
           <li>Cart</li>
+          <li>User : {loggedInUser}</li>
           <button
             onClick={() => {
               btnName === "Login" ? setBtnName("Logout") : setBtnName("Login");

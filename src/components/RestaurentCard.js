@@ -1,6 +1,9 @@
+import { useContext } from "react";
+import UserContext from "../utils/UserContext";
 const stylecard={
     padding:"0px 10px"
 }
+const {loggedInUser} = useContext(UserContext)
 const RestaurentCard = (props) => {
   let {name,avgRating,cloudinaryImageId,costForTwo,cuisines,sla} = props.resData.info 
   return (
@@ -16,6 +19,7 @@ const RestaurentCard = (props) => {
         <p>{avgRating +'*'}</p>
         <p>{costForTwo}</p>
         <p>{sla.deliveryTime + 'minutes'}</p>
+        <p>User : {loggedInUser}</p>
       </div>
     </div>
   );
