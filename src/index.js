@@ -4,6 +4,8 @@ import Header from "./components/Header";
 import Error from "./components/Error";
 import { createBrowserRouter, Outlet, RouterProvider } from "react-router-dom";
 import UserContext from "./utils/UserContext";
+import { Provider } from "react-redux";
+import appStore from "./stores/appStore";
 
 /* Applayout Component */
 
@@ -15,13 +17,15 @@ const AppLayout = () => {
     };
     setUserName(data.name);
   }, []);
-  debugger
+  
   return (
     <>
+    <Provider store={appStore}>
       <UserContext.Provider value={{ loggedInUser :userName, setUserName }}>
         <Header />
         <Outlet />
       </UserContext.Provider>
+    </Provider>
     </>
   );
 };

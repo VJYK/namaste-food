@@ -28,7 +28,7 @@ const RestaurentCard = (props) => {
 export const withLabelPromoted=(RestaurentCard)=>{
   return (props)=>{
     if(props){
-      debugger
+      
       return (<>
         <label>Open</label>
         <RestaurentCard {...props}/>
