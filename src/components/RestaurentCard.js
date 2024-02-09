@@ -3,8 +3,8 @@ import UserContext from "../utils/UserContext";
 const stylecard={
     padding:"0px 10px"
 }
-const {loggedInUser} = useContext(UserContext)
 const RestaurentCard = (props) => {
+  const {loggedInUser} = useContext(UserContext)
   let {name,avgRating,cloudinaryImageId,costForTwo,cuisines,sla} = props.resData.info 
   return (
     <div className="card-container">
