@@ -35,6 +35,7 @@ const About = lazy(() => import("./components/About"));
 const Body = lazy(() => import("./components/Body"));
 const ContactUs = lazy(() => import("./components/ContactUS"));
 const RestaurentMenu = lazy(() => import("./components/RestaurentMenu"));
+const Cart = lazy(()=>import('./components/Cart'));
 
 const appRouter = createBrowserRouter([
   {
@@ -78,6 +79,14 @@ const appRouter = createBrowserRouter([
         element: (
           <Suspense fallback="loading...">
             <RestaurentMenu />
+          </Suspense>
+        ),
+      },
+      {
+        path: "/cart",
+        element: (
+          <Suspense fallback="loading...">
+            <Cart />
           </Suspense>
         ),
       },

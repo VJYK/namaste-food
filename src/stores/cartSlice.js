@@ -1,30 +1,28 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, current } from "@reduxjs/toolkit";
 
 const cartSlice = createSlice({
-    name:"cart",
-    initialState:{
-        items:[]
+  name: "cart",
+  initialState: {
+    items: [],
+  },
+  reducers: {
+    addItem: (state, action) => {
+      // Redux Toolkit uses immer BTS
+      state.items.push(action.payload);
     },
-    reducers:{
-        addItem:(state,action)=>{
-            //Vanilla(older) Redux ==> Don't mutate the state, returning also mandatory
-            //const newState = [...state]
-            //newState.items.push(action.payload)
-            //return newState
+    removeItem: (state, action) => {
+      state.items.pop();
+    },
+    //originalState = {items: ["pizza"]}
+    clearCart: (state, action) => {
+      //RTK - either Mutate the existing  state or return a new State
+      // state.items.length = 0; // originalState = []
 
-            //In RTK
-            //mutating the state at here, returning is not mandatory
-            //Redux using Immerse for mutate state.
-            state.items.push(action.payload)
-        },
-        removeItem:(state,action)=>{
-            state.items.pop()
-        },
-        clearItems:(state,action)=>{
-            state.items.length ==0
-        }
-    }
-})
+      return { items: [] }; // this new object will be replaced inside originalState = { items: [] }
+    },
+  },
+});
 
-export const {addItem,removeItem,clearItems} = cartSlice.actions;
+export const { addItem, removeItem, clearCart } = cartSlice.actions;
+
 export default cartSlice.reducer;
