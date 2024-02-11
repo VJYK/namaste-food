@@ -3,12 +3,14 @@ import { LOGO_URL } from "../utils/constant";
 import { useState,useContext} from "react";
 import useOnlineStatus from "../utils/useOnlineStatus";
 import UserContext from "../utils/UserContext";
+import { useSelector } from "react-redux";
 
 const Header = () => {
   const [btnName, setBtnName] = useState("Login");
   const status = useOnlineStatus();
   const {loggedInUser} = useContext(UserContext);
 
+  const cartItems = useSelector(store=>store.cart.items)
   console.log(loggedInUser)
   return (
     <div className="header">

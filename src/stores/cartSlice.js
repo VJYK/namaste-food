@@ -6,8 +6,15 @@ const cartSlice = createSlice({
         items:[]
     },
     reducers:{
-        addItems:(state,action)=>{
-            //mutating the state at here
+        addItem:(state,action)=>{
+            //Vanilla(older) Redux ==> Don't mutate the state, returning also mandatory
+            //const newState = [...state]
+            //newState.items.push(action.payload)
+            //return newState
+
+            //In RTK
+            //mutating the state at here, returning is not mandatory
+            //Redux using Immerse for mutate state.
             state.items.push(action.payload)
         },
         removeItem:(state,action)=>{
@@ -18,5 +25,6 @@ const cartSlice = createSlice({
         }
     }
 })
-export const {addItems,removeItem,clearItems} = cartSlice.actions;
+
+export const {addItem,removeItem,clearItems} = cartSlice.actions;
 export default cartSlice.reducer;
