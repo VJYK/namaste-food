@@ -11,8 +11,8 @@ const Header = () => {
   const {loggedInUser} = useContext(UserContext);
 
   const cartItems = useSelector(store=>store.cart.items)
-  console.log(cartItems)
-  console.log(loggedInUser)
+  //console.log(cartItems)
+  //console.log(loggedInUser)
   return (
     <div className="header">
       <div className="logo-container">
